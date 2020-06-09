@@ -32,7 +32,7 @@ export default {
         // 默认返回的是response，response是axios的统一格式，我们可以只返回请求服务器的data数据
         let { error_code = 0 } = response.data
         if (error_code != 0) {
-          router.replace({ name: 'Logoin', params: response })
+          router.replace({ name: 'Login', params: response })
         }
         return response.data
       },

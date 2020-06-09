@@ -11,16 +11,16 @@ const USER_INFO = '/admin/getadminuserbyid' //获取指定_id用户的信息
 
 /* 权限接口 */
 const LIMIT_ADD = '/admin/addlimit' //新增权限
-const LIMIT_LIST = '/amin/getlimit' //查询权限
-const LIMIT_ALLLIST = '/admin/getlimitadd' //查询权限
+const LIMIT_LIST = '/admin/getlimit' //查询权限
+const LIMIT_ALLLIST = '/admin/getlimitall' //查询权限
 const LIMIT_DEL = '/admin/deletelimit' //删除权限
-const LIMIT_UPD = '/admin/uodatelimit' //修改权限
+const LIMIT_UPD = '/admin/updatelimit' //修改权限
 const LIMIT_COUNT = '/admin/getlimitcount' //获取权限列表数量
 /* 角色接口 */
 
 const ROLE_ADD = '/admin/addrole' //新增角色
 const ROLE_LIST = '/admin/getrole' //分页查询角色
-const ROLE_ALLLIST = '/admin/getasddrole' //查询所有角色
+const ROLE_ALLLIST = '/admin/getaddrole' //查询所有角色
 const ROLE_DEL = '/admin/deleterole' //删除角色
 const ROLE_COUNT = '/admin/getrolecount' //查询角色数量
 const ROLE_UPD = '/admin/updaterole' //更新角色
@@ -155,7 +155,7 @@ class Http {
     })
   }
   // 所有
-  static role_addlist() {
+  static role_listadd() {
     return this.common({
       url: ROLE_ALLLIST
     })
@@ -224,6 +224,13 @@ class Http {
       url: USER_UPD,
       method: 'POST',
       data: { _id, username, password, role }
+    })
+  }
+  static user_info(_id = '') {
+    return this.common({
+      url: USER_INFO,
+
+      params: { _id }
     })
   }
   /* ************城市列表************ */
@@ -449,7 +456,7 @@ class Http {
   //分页
   static member_list(currpage) {
     return this.common({
-      url: MOVIE_LIST,
+      url: MEMBER_LIST,
       params: { currpage }
     })
   }
